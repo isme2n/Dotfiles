@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Setting up local environment..."
+ansible-playbook ~/dotfiles/main.yml

@@ -1,0 +1,34 @@
+---
+- include_tasks: "install-{{ ansible_os_family | lower }}.yml"
+
+# Configuration
+- name: Check if zshrc already exists
+  stat: path="{{ ansible_env.HOME }}/.zshrc"
+  register: zshrc_stat
+
+- name: Back up zshrc if it exists
+  command: mv ~/.zshrc ~/.zshrc.orig
+  args:
+    creates: "{{ ansible_env.HOME }}/.zshrc.orig"
+  when: zshrc_stat.stat.exists and not zshrc_stat.stat.islnk
+  changed_when: false
+
+- import_tasks: oh-my-zsh.yml
+
+- name: Link zshrc file
+  file:
+    src: "{{ dotfiles_home }}/roles/zsh/files/zshrc.link"
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+    state: link
+    force: yes
+    follow: no
+
+- name: Link custom zsh theme
+  file:
+    src: "{{ dotfiles_home }}/roles/zsh/files/custom.zsh-theme"
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/custom.zsh-theme"
+    state: link
+    force: yes
+    follow: no
+
+- import_tasks: link-shell-configs.yml

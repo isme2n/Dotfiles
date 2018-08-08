@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  connection: local
+  roles:
+    - { role: ../roles/git }
+    - { role: ../roles/mac, tags: ['bootstrap'], when: "ansible_os_family == 'Darwin'" }
+    - { role: ../roles/zsh, tags: ['bootstrap'] }
+    - { role: ../roles/vim }
+    - { role: ../roles/python }
+    - { role: ../roles/node }
+  vars:
+    - dotfiles_home: "{{ ansible_env.HOME }}/dotfiles"
+    - mac_homebrew_update: no
+    - mac_homebrew_upgrade: no
+    - mac_install_apps_from_brewfile: no

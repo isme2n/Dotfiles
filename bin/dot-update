@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Updating local environment..."
+ansible-playbook ~/dotfiles/main.yml --skip-tags "bootstrap"

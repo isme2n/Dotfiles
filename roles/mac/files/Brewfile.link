@@ -1,0 +1,42 @@
+# Taps
+tap "brewsci/science"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+tap "homebrew/services"
+
+# Binaries/Libraries
+brew "ansible"
+brew "docker"
+brew "docker-compose"
+brew "git"
+brew "jq"
+brew "libyaml"
+brew "mas"
+brew "pipenv"
+brew "pyenv"
+brew "python"
+brew "wget"
+brew "xz"
+brew "yarn", args: ["without-node"]
+brew "zsh"
+
+# Applications
+cask "alfred"
+cask "bettertouchtool"
+cask "docker"
+cask "google-chrome"
+cask "iterm2"
+cask "jetbrains-toolbox"
+cask "microsoft-teams"
+cask "notion"
+cask "postman"
+cask "vagrant"
+cask "visual-studio-code"
+
+# Mac App Store (MAS)
+mas "KakaoTalk", id: 869223134
+mas "Slack", id: 803453959
+mas "Spark", id: 1176895641
+mas "Telegram", id: 747648890
+mas "Amphetamine", id: 937984704
